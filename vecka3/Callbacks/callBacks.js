@@ -57,10 +57,7 @@ function culculate(operation){
             return function(a,b){
                 return a-b; 
             }
-
-
-
     }
 
 }
-console.log(culculate('SUB')(2,5));
+console.log(culculate('ADD')(2,5));
