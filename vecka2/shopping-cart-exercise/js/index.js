@@ -17,8 +17,8 @@ function renderTheCards(){
                 toolTip(products[i], product);
                 articleWarning(products[i].parentNode);
             }
-            
-            listProductsInCart();
+
+
             updateCart();
             
         });
@@ -28,10 +28,10 @@ function renderTheCards(){
 
 //Function declarations, add code inside {}
 function updateCart() {
+        listProductsInCart();
         document.getElementById('products').innerHTML = cartProducts;
         document.getElementById('productsInCart').innerHTML = shoppingCart.length;  
         renderDeleteButton();
-        
 }
 
 function listProductsInCart() {
@@ -60,10 +60,10 @@ function renderDeleteButton(){
                 deleteListing(shoppingCart,text);
                 listProductsInCart();
                 updateCart();
+
             }); 
         }); 
     }
-        
 }
 
 // deleting the items from the shop cart

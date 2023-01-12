@@ -192,3 +192,6 @@ p {
     visibility: visible;
     opacity: 1;
   }
+  .already_exist{
+    color: red;
+  }
