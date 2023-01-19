@@ -14,23 +14,22 @@ function renderTheCards(){
             if (!isExist(shoppingCart, product)) {
                 shoppingCart.push(product);
             }else {
-                toolTip(products[i], product);
-                articleWarning(products[i].parentNode);
-            }
-
-
+             
+                        articleWarning(products[i].parentNode);
+                    }
+             
             updateCart();
-            
+
         });
     }
 }
 
-
+renderTheCards();
 //Function declarations, add code inside {}
 function updateCart() {
         listProductsInCart();
         document.getElementById('products').innerHTML = cartProducts;
-        document.getElementById('productsInCart').innerHTML = shoppingCart.length;  
+        document.getElementById('productsInCart').innerHTML = shoppingCart.length; 
         renderDeleteButton();
 }
 
@@ -42,8 +41,6 @@ function listProductsInCart() {
     }
 
 }
-
-renderTheCards();
 //<span>&#128465;</span>
 document.getElementById('open-cart').addEventListener('click', function() {
     document.getElementById('cart').classList.toggle('hide');
@@ -55,12 +52,19 @@ function renderDeleteButton(){
         items.forEach((element)=> {
             let figure = element.childNodes[0];
             let text = element.childNodes[0].getAttribute('data-items');
-            let htmlCards = document.querySelectorAll('.card');
+
            figure.addEventListener('click', ()=>{
+            let articles = document.querySelectorAll('.cards > .card');
                 deleteListing(shoppingCart,text);
+                
+                articles.forEach(article =>{
+
+                    if(article.getAttribute('data-product') ===text && shoppingCart.includes(text) == false){
+                        deleteWarning(article);
+                    }
+                    });
                 listProductsInCart();
                 updateCart();
-
             }); 
         }); 
     }
@@ -69,7 +73,7 @@ function renderDeleteButton(){
 // deleting the items from the shop cart
 function deleteListing(arr,item){
     if(arr.includes(item)){
-        let itemsIndex = arr.indexOf(item); 
+        let itemsIndex = arr.indexOf(item);
         arr.splice(itemsIndex, 1); 
     }
 }
@@ -92,10 +96,18 @@ function toolTip(button, title){
 
 function articleWarning(article){
     let exist = article.querySelector('.already_exist');
+    let createText = document.createElement('p'); 
     if(exist == null){
-        let createText = document.createElement('p'); 
-        createText.textContent = 'Already exists in the cart! '
+        createText.textContent = 'Already exists in the cart! ';
         createText.classList.add('already_exist'); 
         article.appendChild(createText); 
     }
+}
+
+
+function deleteWarning(article){  
+
+        if(article.querySelector('.already_exist') !== null){
+            article.querySelector('.already_exist').remove();
+        } 
 }

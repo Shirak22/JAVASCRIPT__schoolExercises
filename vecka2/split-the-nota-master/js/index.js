@@ -52,3 +52,24 @@ function showDividedSum(sum) {
             document.getElementById('friendSum').innerHTML = 'Please fill valid data! <strong> ""NUMBER"" </strong> ';
         }
 }
+
+
+// function calculatedTotal() {
+//     //Hämtar det som skrivits i inputfältet med ID sum
+//     const sum = document.getElementById('sum').value;
+//     //Hämtar det som skrivits i inputfältet med ID tip
+//     const tip = document.getElementById('tip').value;
+//     //Hämtar det som skrivits i inputfältet med ID numberOfFriends
+//     const numberOfFriends = document.getElementById('numberOfFriends').value;
+//     let total; 
+//     // const calculatedTip = calculateTip(sum, tip);
+//     if(tip == ''){
+//         total = parseInt(sum);
+//     }else {
+//         total = parseInt(sum) + parseInt(tip);
+//     }
+     
+//     const totalDivided = divideTotal(total, numberOfFriends); 
+
+//     return totalDivided.toString(); 
+// }
