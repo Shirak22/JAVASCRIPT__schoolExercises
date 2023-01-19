@@ -16,6 +16,7 @@ function renderTheCards(){
             }else {
              
                         articleWarning(products[i].parentNode);
+                        toolTip(products[i], product)
                     }
              
             updateCart();
@@ -61,6 +62,9 @@ function renderDeleteButton(){
 
                     if(article.getAttribute('data-product') ===text && shoppingCart.includes(text) == false){
                         deleteWarning(article);
+                        article.querySelector('button').classList.remove('tooltip'); 
+                        article.querySelector('button').innerHTML = ' Add to cart ' ;
+                        
                     }
                     });
                 listProductsInCart();
